@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            Todoapp
+        </title>
+        
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+        
+    </head>
+    <style>
+        .well{
+            background-color:#2331ad;
+            color: white;
+        }
+        .container{
+            width: 500px;
+            border: 1px solid #85b298;
+            background-color:#1fdada;
+        }
+    </style>
+    
+    <body style="background-color: darkslateblue;"><br>
+        <img src="{% static 'images/logo.png' %}" width="100px" style="margin-left: 400px;"><br><br><br>
+        <div class="container">
+            <div class="row">
+                <div class="well">
+                    <h3>ADMIN HERE!<span class="glyphicon glyphicon-edit pull-right"></span></h3>
+                </div>
+                <div class="col-md-12">
+                    <form method="POST" action="">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label class="col-md-2">Name</label>
+                            <input type="text" placeholder="Admin_name" name="name" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2">Password</label>
+                            <input type="password" name="Password" placeholder="**********" class="form-control">
+                        </div>
+                        <div>
+                            <button type="submit" class="btn btn-success btn-block">Login</button>
+                        </div><br>
+                    </form>
+                    <h2 style="color : red;text-align:center;padding: 20px;">{{msg}}</h2>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

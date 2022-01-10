@@ -1,0 +1,327 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>
+        Todoapp
+    </title>
+  
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<style>
+    
+    thead input {
+        width: 100%;
+    }
+    
+    
+    .btn_grid_export button{
+        padding: 10px 30px;
+        border: none;
+        outline: 0;
+        box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+        border-radius: 5px;
+        background-color: #FF5733;
+        color: #fff;
+    }
+    .dataTables_paginate{
+        width: 150px;
+        font-size: 18px;
+        display: flex;
+        justify-content:space-between;
+    }
+    .paginate_button{
+        padding: 0 5px;
+    }
+    .breadcrumb{
+    height: 50px;
+    margin-top: 25px;
+    padding: .75rem 1rem!important;
+    background-color: #0f62a5;
+    text-transform: uppercase; 
+}
+.brdcrmb  nav{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+.breadcrumb-item a{
+    color: #fff;  
+    text-transform: uppercase; 
+}
+.acc_div{
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    padding:3%;
+    border-radius: 6px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -ms-border-radius: 6px;
+    -o-border-radius: 6px;
+   /* margin:0 10px 20px 20px; */
+    padding-bottom: 100px; 
+}
+.table th, .table thead th{
+    text-align: center;
+    color: #3e5569!important;
+}
+.head{
+    font-size: medium;
+
+}
+.header{
+    font-size: medium;
+}
+
+.div_h{
+    height: 710px;
+  }
+.table_overflow{
+    overflow: auto;
+    height: 600px;
+}
+/* width */
+.table_overflow::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  .table_overflow::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    width: 5px;
+  }
+  
+  /* Handle */
+  .table_overflow::-webkit-scrollbar-thumb {
+    background: #888;
+    width: 5px;
+  }
+  
+  /* Handle on hover */
+  .table_overflow::-webkit-scrollbar-thumb:hover {
+    width: 5px;
+  }
+
+  
+</style>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+  
+      <ul class="navbar-nav">
+        
+        <li class="nav-item active">
+          <a class="nav-link" href="/detail/"><h3><i class="fa fa-home">Home</i></h3></a>
+        </li>
+        </li><br>
+        <li class="nav-item active">
+       
+    
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" href="/details/"><h3><i class="fa fa-address-book">Student</i></h3></a>
+        </li>
+        <li class="nav-item active">
+          <a  class="greet" href="/logout/"><h3><i class="fa fa-power-off">Logout</i></h3></a>
+      </li>  
+  </nav><br>
+  <div id="page-wrapper">
+    <!-- main content -->
+    <div class="content">
+        <!-- Content Header (Page header) -->
+
+        <div class="content-header">
+
+   
+    
+    
+     
+
+                <div class="header-title">
+                    <h1>
+                        <center>BOOKING DETAIL PAGE</center>
+                    </h1>
+                </div>
+            </div>
+        
+          <div class="acc_div" style="min-height: 800px;width:100%;">
+            <div class="acc_head">
+                <div class="btn_grid_export">
+                    <a href="/downloadCSV/"><button style="padding-right: 20px;">Export as csv</button></a>
+                      <!-- {% ifequal Superadmin 'Admin' %}<a href="/adminexportascsv/?id=all"><button>Export as csv</button></a>{% endifequal %} -->
+                </div><br>
+        
+              <div class="acc_cnt" style="display: flex;">
+                <h3>Students :<span>{{stud_count}}</span></h3>&nbsp;&nbsp;&nbsp;&nbsp;
+                <h3 style="padding-bottom: 20px;">Total Amount:<span class="datainto">{{total}}&#x20B9;</span></h3>
+              </div>
+                 
+    
+               <div class="acc_search">
+              <form>
+             
+              </form>
+            <div style="display: flex;align-items: center;justify-content: center;">
+              <!-- <div> <i class="bi bi-arrow-right-circle"></i></div> -->
+              <div><a href=""><i class="bi bi-plus-circle"></i></a></div>
+            </div>
+          </div>
+    
+            </div>
+    
+            <div class="table_overflow">
+               <table id="example" class="table table-bordered" style="width:100%; table-layout: fixed;word-break: break-all;">
+            <thead>
+                  <tr>
+                    <!-- <th class="head" scope="col">Sl.No.</th> -->
+                    <th class="head" scope="col">Image</th>
+                    <th class="head" scope="col">Student</th>
+                    <th class="head" scope="col">Mail_id</th>
+                    <th class="head" scope="col">Phone No</th>
+                    <th class="head" scope="col">Address</th>
+                    <th class="head" scope="col">Course</th>
+                    <th class="head" scope="col">Join Date</th>
+                    <th class="head" scope="col">Amount</th>
+                    <th class="head" scope="col">Paid</th>
+                    <th class="head" scope="col">Balance &#x20B9;</th>
+                    <th class="head" scope="col">Paid Date</th>
+                    <th class="head" scope="col">Action</th>
+                    <th class="head" scope="col">Invoice</th>
+    
+                    
+                    <!-- <th scope="col">Share</th> -->
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for x in stud %}
+                  <tr>
+                    <!-- <th scope="row">1</th> -->
+                    <!-- <td>{{x.id}}</td> -->
+                    <td>
+                    <img src="{{x.Stud_image.url}}" width="60px" alt="Avatar" >
+                    </td>
+                    <td class="header">{{x.Stud_name}}</td>
+                    <td class="header">{{x.Stud_mail}}</td>
+                    <td class="header">{{x.Stud_number}}</td>
+                    <td class="header">{{x.Stud_address}}</td>
+                    <td class="header">{{x.Stud_course}}</td>
+                    <td class="header">{{x.Join_date}}</td>
+                    <td class="header">&#x20B9;{{x.Course_amount}}</td>
+                    <td class="header">&#x20B9;{{x.Stud_paid}}.00</td>
+                    <td class="header"> &#x20B9;{{x.Stud_balance}}.00</td>
+                    <td class="header">{{x.End_date}}</td>
+                    <td class="header"><a href="/update/{{x.id}}"><button type="button" class="btn btn-success"><h4>Update</h4></button></a></td>
+                    <td class="header"><a href="/DownloadCV/?id={{x.id}}"><button type="button" class="btn btn-danger"><p>PDF-{{x.Stud_name}}</p></button></a></td>
+                    
+    
+                  </tr>
+                  {% endfor %}
+    
+    
+                </tbody>
+            </table>
+            <nav aria-label="...">
+                <ul class="pagination">
+                    {% if stud.has_previous %}
+                  <li class="page-item ">
+                    <a class="page-link" href="/details/?page=1" tabindex="-1">First</a>
+                  </li>
+                  <li class="page-item">
+                    <a class="page-link" href="/details/?page={{stud.previous_page_number}}" tabindex="-1">Previous</a>
+                  </li>
+                  {% endif %}
+                  <!-- <li class="page-item"><a class="page-link" href="">1</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+                  {% if stud.has_next %}
+                  <li class="page-item">
+                    <a class="page-link" href="/details/?page={{stud.next_page_number}}">Next</a>
+                  </li>
+                  {% endif %}
+                </ul>
+              </nav>
+            </div>
+            
+            
+          </div>
+    
+    
+        </div>
+      </div>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+      // Setup - add a text input to each footer cell
+      $('#example thead tr')
+          .clone(true)
+          .addClass('filters')
+          .appendTo('#example thead');
+   
+      var table = $('#example').DataTable({
+          orderCellsTop: true,
+          fixedHeader: true,
+          initComplete: function () {
+              var api = this.api();
+   
+              // For each column
+              api
+                  .columns()
+                  .eq(0)
+                  .each(function (colIdx) {
+                      // Set the header cell to contain the input element
+                      var cell = $('.filters th').eq(
+                          $(api.column(colIdx).header()).index()
+                      );
+                      var title = $(cell).text();
+                      $(cell).html('<input type="text" placeholder="' + title + '" />');
+   
+                      // On every keypress in this input
+                      $(
+                          'input',
+                          $('.filters th').eq($(api.column(colIdx).header()).index())
+                      )
+                          .off('keyup change')
+                          .on('keyup change', function (e) {
+                              e.stopPropagation();
+   
+                              // Get the search value
+                              $(this).attr('title', $(this).val());
+                              var regexr = '({search})'; //$(this).parents('th').find('select').val();
+   
+                              var cursorPosition = this.selectionStart;
+                              // Search the column for that value
+                              api
+                                  .column(colIdx)
+                                  .search(
+                                      this.value != ''
+                                          ? regexr.replace('{search}', '(((' + this.value + ')))')
+                                          : '',
+                                      this.value != '',
+                                      this.value == ''
+                                  )
+                                  .draw();
+   
+                              $(this)
+                                  .focus()[0]
+                                  .setSelectionRange(cursorPosition, cursorPosition);
+                          });
+                  });
+          },
+      });
+  });
+  
+  </script>
+</body>
+</html>

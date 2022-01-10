@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            Todoapp
+        </title>
+    </head>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap');
+
+body {
+    font-family: 'Maven Pro', sans-serif;
+    background-color: blue
+}
+
+hr {
+    color: #0000004f;
+    margin-top: 5px;
+    margin-bottom: 5px
+}
+
+.add td {
+    color: #c5c4c4;
+    text-transform: uppercase;
+    font-size: 12px
+}
+
+.content {
+    font-size: 14px
+}
+.cs{
+    background-color: white;
+}
+    </style>
+    
+<body>
+<div class="container mt-5 mb-3">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                {% for x in stud %}
+                <div class="d-flex flex-row p-6"> <h2 style="font-weight: bolder;">EDURE</h2>
+                   <div class="cs">
+                    <div class="d-flex flex-column"> <span class="font-weight-bold">Tax Invoice</span> <small>INV-{{x.id}}</small> 
+                    </div>
+                </div>
+                </div>
+                {% endfor %}
+                <hr>
+                <div class="table-responsive p-2">
+                    <table class="table table-borderless">
+                        <tbody>
+                            <tr class="add">
+                                <td>To</td>
+                                <td>From</td>
+                            </tr>
+                            
+                            <tr class="content">
+                                {% for x in stud %}
+                                <td class="font-weight-bold">{{x.Stud_name}} <br>{{x.Stud_number}} <br>{{x.Stud_address}}</td>
+                                {% endfor %}
+                                <td class="font-weight-bold">Edure <br> Aristo Junction,Thambanoor <br> Thiruvananthapuram,Kerala</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <hr>
+                <div class="products p-2">
+                    <table class="table table-borderless">
+                        {% for x in stud %}
+                        <tbody>
+                            <tr class="add">
+                                <td>Course</td>
+                                <td>Course Amount</td>
+                                <td>Paid</td>
+                                <td>Date</td>
+                                <td class="text-center">Balance</td>
+                            </tr>
+                            <tr class="content">
+                                <td>{{x.Stud_course}}</td>
+                                <td>{{x.Course_amount}} &#x20B9;</td>
+                                <td>{{x.Stud_paid}} &#x20B9;</td>
+                                <td>{{x.End_date}}</td>
+                                <td class="text-center">{{x.Stud_balance}} &#x20B9;</td>
+                            </tr>
+                           
+                        </tbody>
+                        {% endfor %}
+                    </table>
+                </div>
+                <hr>
+                
+                    </table>
+                </div>
+                <hr>
+                <div class="address p-5" style="text-align: center;font-size: large;">
+                   <B> "Thank you for choosing Edure"</B>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
